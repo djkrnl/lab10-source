@@ -1,0 +1,30 @@
+// Wstępne przygotowanie - autentykacja
+C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie>gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? HTTPS
+? Authenticate Git with your GitHub credentials? Yes
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+! First copy your one-time code: ADE3-A008
+Press Enter to open github.com in your browser... 
+✓ Authentication complete.
+- gh config set -h github.com git_protocol https
+✓ Configured git protocol
+✓ Logged in as djkrnl
+
+// Krok 1a
+// Utworzenie repozytorium GitHub
+C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie>gh repo crea
+te
+? What would you like to do? Create a new repository on GitHub from scratch
+? Repository name lab10-source
+
+? Repository name lab10-source
+? Description Repozytorium Source repo
+? Visibility Public
+? Would you like to add a README file? No
+? Would you like to add a .gitignore? No
+? This will create "lab10-source" as a public repository on GitHub. Continue? Yes      
+? Clone the new repository locally? Yes
+? Clone the new repository locally? (Y/n) y
+// Utworzenie pierwszej wersji aplikacji na repozytorium - commit i push
