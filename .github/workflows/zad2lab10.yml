@@ -40,16 +40,17 @@ jobs:
     # Określenie systemu, na którym będzie działał workflow
     runs-on: ubuntu-latest
     steps:
-      # Akcja przypisująca workflow do repozytorium Config repo, modyfikująca plik źródłowy wdrożenia w repozytorium Config repo w celu podmiany obrazu Docker i wysyłająca zmiany do repozytorium
+      # Akcja przypisująca workflow do repozytorium Config repo
       - id: checkout
         uses: actions/checkout@v4
         with:
-          name: djkrnl/lab10-config
-          run: |
-            git config user.name djkrnl
-            git config user.email krnl75313@gmail.com
-            sed -i "s/\b[0-9a-f]{5,40}\b/${{ github.sha }}/g" .github/workflows/zad2lab10.yml
-            git add .
-            git commit -m "workflow"
-            git push
+          repository: djkrnl/lab10-config
+      # Modyfikacja pliku źródłowego wdrożenia w repozytorium Config repo w celu podmiany obrazu Docker i wysłanie zmiany do repozytorium
+      - run: |
+          git config user.name djkrnl
+          git config user.email krnl75313@gmail.com
+          sed -i "s/\b[0-9a-f]{5,40}\b/${{ github.sha }}/g" .github/workflows/zad2lab10.yml
+          git add .
+          git commit -m "workflow"
+          git push
   

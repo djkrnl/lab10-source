@@ -63,3 +63,42 @@ PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-sou
 
 To see runs for this workflow, try: gh run list --workflow=zad2lab10.yml
 // Sprawdzenie stanu wykonania workflow
+PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh workflow view
+? Select a workflow lab10-workflow (zad2lab10.yml)
+lab10-workflow - zad2lab10.yml
+ID: 80243975
+
+Total runs 2
+Recent runs
+   TITLE           WORKFLOW        BRANCH  EVENT              ID        
+✓  lab10-workflow  lab10-workflow  main    workflow_dispatch  7303415314
+X  lab10-workflow  lab10-workflow  main    workflow_dispatch  7303386003
+
+To see more runs for this workflow, try: gh run list --workflow zad2lab10.yml
+To see the YAML for this workflow, try: gh workflow view zad2lab10.yml --yaml
+// Sprawdzenie logów uruchomienia workflow w celu znalezienia błędów
+PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh run view 7303386003 --log
+dockerCI        Set up job      2023-12-22T19:52:55.3294241Z Current runner version: '2.311.0'
+dockerCI        Set up job      2023-12-22T19:52:55.3318296Z ##[group]Operating System
+dockerCI        Set up job      2023-12-22T19:52:55.3318949Z Ubuntu
+dockerCI        Set up job      2023-12-22T19:52:55.3319320Z 22.04.3
+dockerCI        Set up job      2023-12-22T19:52:55.3319771Z LTS
+dockerCI        Set up job      2023-12-22T19:52:55.3320109Z ##[endgroup]
+dockerCI        Set up job      2023-12-22T19:52:55.3320478Z ##[group]Runner Image
+dockerCI        Set up job      2023-12-22T19:52:55.3321135Z Image: ubuntu-22.04
+dockerCI        Set up job      2023-12-22T19:52:55.3321650Z Version: 20231217.2.0
+(...)
+dockerCI        Set up job      2023-12-22T19:52:55.7380825Z ##[error]Unable to resolve action `docker/login-action@v13`, unable to find version `v13`
+kubernetesCI    Set up job      2023-12-22T19:52:55.6492067Z Current runner version: '2.311.0'
+kubernetesCI    Set up job      2023-12-22T19:52:55.6516348Z ##[group]Operating System
+kubernetesCI    Set up job      2023-12-22T19:52:55.6516998Z Ubuntu
+kubernetesCI    Set up job      2023-12-22T19:52:55.6517319Z 22.04.3
+kubernetesCI    Set up job      2023-12-22T19:52:55.6517747Z LTS
+kubernetesCI    Set up job      2023-12-22T19:52:55.6518044Z ##[endgroup]
+kubernetesCI    Set up job      2023-12-22T19:52:55.6518523Z ##[group]Runner Image
+kubernetesCI    Set up job      2023-12-22T19:52:55.6519028Z Image: ubuntu-22.04
+kubernetesCI    Set up job      2023-12-22T19:52:55.6519400Z Version: 20231217.2.0
+(...)
+kubernetesCI    Run actions/checkout@v4 2023-12-22T19:52:56.1970514Z ##[warning]Unexpected input(s) 'name', 'run', valid inputs are ['repository', 'ref', 'token', 'ssh-key', 'ssh-known-hosts', 'ssh-strict', 'persist-credentials', 'path', 'clean', 'filter', 'sparse-checkout', 'sparse-checkout-cone-mode', 'fetch-depth', 'fetch-tags', 'show-progress', 'lfs', 'submodules', 'set-safe-directory', 'github-server-url']
+(...)
+kubernetesCI    Post Run actions/checkout@v4    2023-12-22T19:52:56.7997214Z ##[warning]Unexpected input(s) 'name', 'run', valid inputs are ['repository', 'ref', 'token', 'ssh-key', 'ssh-known-hosts', 'ssh-strict', 'persist-credentials', 'path', 'clean', 'filter', 'sparse-checkout', 'sparse-checkout-cone-mode', 'fetch-depth', 'fetch-tags', 'show-progress', 'lfs', 'submodules', 'set-safe-directory', 'github-server-url']
