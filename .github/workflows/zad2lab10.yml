@@ -47,8 +47,8 @@ jobs:
           repository: djkrnl/lab10-config
       # Modyfikacja pliku źródłowego wdrożenia w repozytorium Config repo w celu podmiany obrazu Docker i wysłanie zmiany do repozytorium
       - run: |
-          git config user.name djkrnl
-          git config user.email krnl75313@gmail.com
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           sed -i -E "s/[0-9a-f]{40}/${{ github.sha }}/g" deployment.yml
           git add .
           git commit -m "workflow"
