@@ -51,3 +51,15 @@ PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-sou
 ✓ Set Actions secret DOCKER_HUB_USERNAME for djkrnl/lab10-source
 PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh secret set DOCKER_HUB_ACCESS_TOKEN --body "dckr_pat_***************************"
 ✓ Set Actions secret DOCKER_HUB_ACCESS_TOKEN for djkrnl/lab10-source
+
+// Krok 4
+// Wyświetlenie listy dostępnych workflow w ramach GitHub Actions
+PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh workflow list
+NAME            STATE   ID      
+lab10-workflow  active  80243975
+// Uruchomienie workflow lab10-workflow
+PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh workflow run zad2lab10.yml
+✓ Created workflow_dispatch event for zad2lab10.yml at main
+
+To see runs for this workflow, try: gh run list --workflow=zad2lab10.yml
+// Sprawdzenie stanu wykonania workflow
