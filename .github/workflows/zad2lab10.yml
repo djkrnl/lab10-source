@@ -45,6 +45,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: djkrnl/lab10-config
+          token: ${{ secrets.PAT }}
       # Modyfikacja pliku źródłowego wdrożenia w repozytorium Config repo w celu podmiany obrazu Docker i wysłanie zmiany do repozytorium
       - run: |
           git config user.name github-actions
