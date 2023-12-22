@@ -1,0 +1,55 @@
+# Nazwa workflow
+name: lab10-workflow
+# Określenie sposobu uruchamiania workflow - manualny
+on: workflow_dispatch
+# Zadania uruchamiane przez workflow
+jobs:
+  # Zadanie odpowiedzialne za przesyłanie obrazu na DockerHub
+  dockerCI:
+    # Określenie systemu, na którym będzie działał workflow
+    runs-on: ubuntu-latest
+    steps:
+      # Akcja przypisująca workflow do repozytorium Source repo
+      - id: checkout
+        uses: actions/checkout@v4
+      # Akcja instalująca i konfigurująca QEMU
+      - id: qemu
+        uses: docker/setup-qemu-action@v3
+      # Akcja instalująca i konfigurująca Buildx
+      - id: buildx
+        uses: docker/setup-buildx-action@v3
+      # Logowanie na Docker Hub za pomocą nazwy użytkownika i tokenu dostępu znajdujących się w repozytorium jako tzw. sekrety
+      - id: docker_login
+        uses: docker/login-action@v13
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      # Budowanie i publikacja gotowych obrazów na Docker Hub - repozytorium lab10, tag określający wersję (zmienna środowiskowa określająca identyfikator commita), platformy amd64 i arm64, eksport cache
+      - id: docker_build
+        uses: docker/build-push-action@v5
+        with:
+          context: ./
+          platforms: linux/arm64/v8,linux/amd64
+          file: ./Dockerfile
+          push: true
+          tags: djkrnl/lab10:${{ github.sha }}
+          cache-from: type=registry,ref=djkrnl/lab10:${{ github.sha }}
+          cache-to: type=inline
+  # Zadanie odpowiedzialne za modyfkację plików YAML w repozytorium Config repo
+  kubernetesCI:
+    # Określenie systemu, na którym będzie działał workflow
+    runs-on: ubuntu-latest
+    steps:
+      # Akcja przypisująca workflow do repozytorium Config repo, modyfikująca plik źródłowy wdrożenia w repozytorium Config repo w celu podmiany obrazu Docker i wysyłająca zmiany do repozytorium
+      - id: checkout
+        uses: actions/checkout@v4
+        with:
+          name: djkrnl/lab10-config
+          run: |
+            git config user.name djkrnl
+            git config user.email krnl75313@gmail.com
+            sed -i "s/\b[0-9a-f]{5,40}\b/${{ github.sha }}/g" .github/workflows/zad2lab10.yml
+            git add .
+            git commit -m "workflow"
+            git push
+  

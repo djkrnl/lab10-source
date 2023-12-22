@@ -14,11 +14,8 @@ Press Enter to open github.com in your browser...
 
 // Krok 1a
 // Utworzenie repozytorium GitHub
-C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie>gh repo crea
-te
+C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie>gh repo create
 ? What would you like to do? Create a new repository on GitHub from scratch
-? Repository name lab10-source
-
 ? Repository name lab10-source
 ? Description Repozytorium Source repo
 ? Visibility Public
@@ -28,3 +25,29 @@ te
 ? Clone the new repository locally? Yes
 ? Clone the new repository locally? (Y/n) y
 // Utworzenie pierwszej wersji aplikacji na repozytorium - commit i push
+C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> git add *
+C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> git commit -m "v1"
+[master (root-commit) 453639a] v1
+ 3 files changed, 46 insertions(+)
+ create mode 100644 Dockerfile
+ create mode 100644 gh.txt
+ create mode 100644 index.html
+C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> git branch -M main
+C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> git remote add origin https://github.com/djkrnl/lab10-source.git
+C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> git push -u origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.22 KiB | 1.22 MiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/djkrnl/lab10-source.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+// Krok 2
+// Ustawianie sekretów DockerHub w repozytorium
+PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh secret set DOCKER_HUB_USERNAME --body "djkrnl"    
+✓ Set Actions secret DOCKER_HUB_USERNAME for djkrnl/lab10-source
+PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh secret set DOCKER_HUB_ACCESS_TOKEN --body "dckr_pat_***************************"
+✓ Set Actions secret DOCKER_HUB_ACCESS_TOKEN for djkrnl/lab10-source
