@@ -2,9 +2,6 @@
 name: lab10-workflow
 # Określenie sposobu uruchamiania workflow - manualny
 on: workflow_dispatch
-# Dodanie uprawnienia do modyfikacji repozytoriów
-permissions:
-  contents: write
 # Zadania uruchamiane przez workflow
 jobs:
   # Zadanie odpowiedzialne za przesyłanie obrazu na DockerHub
