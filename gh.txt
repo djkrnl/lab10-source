@@ -54,7 +54,7 @@ PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-sou
 PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh secret set PAT --body "github_pat_***"
 ✓ Set Actions secret PAT for djkrnl/lab10-source
 
-// Krok 4
+// Krok 4a
 // Wyświetlenie listy dostępnych workflow w ramach GitHub Actions
 PS C:\Users\Kornel\Desktop\POLITECHNIKA\LABORATORIA\PF-SwCO\10\zadanie\lab10-source> gh workflow list
 NAME            STATE   ID      
