@@ -24,7 +24,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      # Budowanie i publikacja gotowych obrazów na Docker Hub - repozytorium lab10, tag określający wersję (zmienna środowiskowa określająca identyfikator commita), platformy amd64 i arm64, eksport cache
+      # Budowanie i publikacja gotowego obrazu na Docker Hub - repozytorium lab10, tag określający wersję (zmienna środowiskowa określająca identyfikator commita), platformy amd64 i arm64, eksport cache
       - id: docker_build
         uses: docker/build-push-action@v5
         with:
